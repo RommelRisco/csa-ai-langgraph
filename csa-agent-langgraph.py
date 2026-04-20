@@ -152,7 +152,7 @@ app = workflow.compile()
 if __name__ == "__main__":
     import sys
     if len(sys.argv) < 2:
-        print("Usagepython csa-langraph.py \"<your query>\"")
+        print("Usage: python csa-langraph.py \"<your query>\"")
         sys.exit(1)
     query = sys.argv[1]
     result = app.invoke({"query": query})

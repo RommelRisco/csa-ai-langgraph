@@ -27,6 +27,14 @@ categorize → analyze_sentiment → classify_request_type → router
 
 ---
 
+### OpenAI API Usage
+ 
+Every node that generates or classifies text (`categorize`, `analyze_sentiment`, `classify_request_type`, and whichever handler is invoked) makes a direct call to the OpenAI API via `ChatOpenAI` from `langchain-openai`. A single query will therefore trigger **4 separate OpenAI API calls** — three for the classification/analysis pipeline and one for the final handler response. Escalated queries only make 3 calls, since the `escalate` node returns a static message with no API call.
+ 
+Be mindful of this when estimating costs or rate-limit usage.
+ 
+---
+
 ## Prerequisites
 
 - Python 3.10+
